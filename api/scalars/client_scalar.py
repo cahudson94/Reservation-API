@@ -1,4 +1,5 @@
 """."""
+
 from uuid import UUID
 from datetime import datetime
 
@@ -17,6 +18,7 @@ class Client:
     name: Optional[str] = ""
     appointments: Optional[List[Appointment]] = Field(default_factory=list)
 
+
 @strawberry.type
 class AddClient:
     """."""
@@ -24,11 +26,13 @@ class AddClient:
     id: UUID = ""
     name: Optional[str] = ""
 
+
 @strawberry.type
 class ClientExists:
     """."""
 
     message: str = "client with this name already exists"
+
 
 @strawberry.type
 class ClientNotFound:
@@ -36,11 +40,13 @@ class ClientNotFound:
 
     message: str = "Couldn't find client with the supplied id"
 
+
 @strawberry.type
 class ClientIdMissing:
     """."""
 
     message: str = "Please supply client id"
+
 
 @strawberry.type
 class ClientDeleted:

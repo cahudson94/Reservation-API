@@ -1,4 +1,5 @@
 """."""
+
 from uuid import UUID
 
 from pydantic import typing
@@ -15,19 +16,22 @@ from api.scalars.provider_scalar import Provider
 from api.resolvers.schedule_resolver import get_schedule, get_schedules
 from api.scalars.schedule_scalar import Schedule
 
+
 @strawberry.type
 class Query:
     """GraphQL Queries."""
 
     @strawberry.field
-    async def appointments(self, info: Info, provider_id: Optional[UUID] = None) -> typing.List[Appointment]:
+    async def appointments(
+        self, info: Info, provider_id: Optional[UUID] = None
+    ) -> typing.List[Appointment]:
         """Get all available appointments, optionally filtered to a single provider."""
         appointments_data_list = await get_appointments(info, provider_id)
         return appointments_data_list
 
     @strawberry.field
     async def appointment(self, info: Info, appointment_id: UUID) -> Appointment:
-        """ Get appointment by id """
+        """Get appointment by id"""
         appointment_dict = await get_appointment(appointment_id, info)
         return appointment_dict
 
@@ -56,13 +60,15 @@ class Query:
         return provider_dict
 
     @strawberry.field
-    async def schedules(self, info: Info, provider_id: Optional[UUID] = None) -> typing.List[Schedule]:
+    async def schedules(
+        self, info: Info, provider_id: Optional[UUID] = None
+    ) -> typing.List[Schedule]:
         """Get all available schedules, optionally filtered to a single provider."""
         schedules_data_list = await get_schedules(info, provider_id)
         return schedules_data_list
 
     @strawberry.field
     async def schedule(self, info: Info, schedule_id: UUID) -> Schedule:
-        """ Get schedule by id """
+        """Get schedule by id"""
         schedule_dict = await get_schedule(schedule_id, info)
         return schedule_dict

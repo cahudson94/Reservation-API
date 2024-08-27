@@ -1,6 +1,14 @@
 # reservation-api
 A simple backend API for appointment scheduling
 
+## Running
+
+- Requires Python 3.10 or newer and Postgresql
+- Install requirements with `pip install -r requirements.txt`
+- Run with `fastapi run` or `fastapi dev main.py` for dev mode
+- Navigate to `http://127.0.0.1:8000/graphql` for the GraphiQL UI
+- Write queries to your hearts content! (warning there is no data pre load currently)
+
 ## Stack
 
 Uses the following tech:
